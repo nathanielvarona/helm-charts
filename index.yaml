@@ -3,6 +3,17 @@ entries:
   pritunl-slack-app:
   - apiVersion: v2
     appVersion: 0.1.7
+    created: "2023-05-20T04:33:40.988424771Z"
+    description: A Helm chart for Pritunl Slack App Slash Commands
+    digest: 6814d8c458b542e1ee56d6107293cfc9ec35dad8d8c7655e2276c70da43d3409
+    icon: https://raw.githubusercontent.com/pritunl/pritunl-artwork/master/logos/logo512.png
+    name: pritunl-slack-app
+    type: application
+    urls:
+    - https://github.com/nathanielvarona/helm-charts/releases/download/pritunl-slack-app-0.1.1/pritunl-slack-app-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.1.7
     created: "2023-05-20T03:24:59.239181748Z"
     description: A Helm chart for Pritunl Slack App Slash Commands
     digest: b99270ded6461d78a9044d0399de205517cbb0d888f0b0f02dcab3b2af9a10d4
@@ -12,4 +23,4 @@ entries:
     urls:
     - https://github.com/nathanielvarona/helm-charts/releases/download/pritunl-slack-app-0.1.0/pritunl-slack-app-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-20T03:24:59.239192648Z"
+generated: "2023-05-20T04:33:40.988432771Z"
