@@ -83,8 +83,8 @@ affinity: {}
 
 env:
   credentials:
-    # PRITUNL_BASE_URL: https://vpn.domain.tld/
-    # PRITUNL_API_SECRET: XXXX
-    # PRITUNL_API_TOKEN: XXXX
-    # SLACK_SIGNING_SECRET: XXXX
-    # SLACK_BOT_TOKEN: XXXX
+    PRITUNL_BASE_URL: https://vpn.domain.tld/
+    PRITUNL_API_SECRET: XXXX
+    PRITUNL_API_TOKEN: XXXX
+    SLACK_SIGNING_SECRET: XXXX
+    SLACK_BOT_TOKEN: XXXX
