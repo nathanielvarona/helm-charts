@@ -1,0 +1,71 @@
+name: Lint and Test Charts
+
+on:
+  pull_request:
+    paths:
+      - 'charts/**'
+
+jobs:
+  lint-chart:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        k8s:
+          - 1.23.17
+          - 1.24.13
+          - 1.25.9
+          - 1.26.4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: "0"
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.11.3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          check-latest: true
+
+      - name: Setup Chart-Testing
+        uses: helm/chart-testing-action@v2.4.0
+
+      - name: Run `kubeconform`
+        env:
+          KUBERNETES_VERSION: v${{ matrix.k8s }}
+        run: |
+          set -euo pipefail
+          CHART_DIRS="$(git --no-pager diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | grep "charts/" | cut -d'/' -f1-2 | uniq)"
+          KUBECONFORM_VERSION="0.6.1"
+
+          # Install kubeconform
+          curl --silent --show-error --fail --location --output /tmp/kubeconform.tar.gz https://github.com/yannh/kubeconform/releases/download/"v${KUBECONFORM_VERSION}"/kubeconform-linux-amd64.tar.gz
+          tar -xf /tmp/kubeconform.tar.gz kubeconform
+
+          # Validate Charts
+          for CHART_DIR in ${CHART_DIRS}; do
+              helm template "${CHART_DIR}" | ./kubeconform -kubernetes-version ${{ matrix.k8s }} -summary -output json
+          done
+
+      - name: Run Chart-Testing (List-Changed)
+        id: list-changed
+        run: |
+          changed=$(ct list-changed --target-branch ${{ github.event.repository.default_branch }})
+          if [[ -n "$changed" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create KIND v${{ matrix.k8s }} Cluster
+        if: steps.list-changed.outputs.changed == 'true'
+        uses: helm/kind-action@v1.4.0
+        with:
+          node_image: kindest/node:v${{ matrix.k8s }}
+
+      - name: Run Chart-Testing (Install)
+        if: steps.list-changed.outputs.changed == 'true'
+        run: |
+          ct install --target-branch ${{ github.event.repository.default_branch }} \
