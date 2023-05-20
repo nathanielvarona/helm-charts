@@ -17,4 +17,4 @@ helm install nathanielvarona/<Helm Chart>
 
 Helm Chart | ArtifactHUB | Docker Hub | Github Source
 ---------|----------|----------|----------
- [pritunl-slack-app](https://github.com/nathanielvarona/helm-charts/tree/main/charts/pritunl-slack-app) | [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/pritunl-slack-app)](https://artifacthub.io/packages/search?repo=pritunl-slack-app) | [nathanielvarona/pritunl-slack-app](https://hub.docker.com/r/nathanielvarona/pritunl-slack-app) | [nathanielvarona/pritunl-slack-app](https://github.com/nathanielvarona/pritunl-slack-app)
+ [pritunl-slack-app](https://github.com/nathanielvarona/helm-charts/tree/main/charts/pritunl-slack-app) | [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/pritunl-slack-app)](https://artifacthub.io/packages/search?repo=pritunl-slack-app) | [pritunl-slack-app](https://hub.docker.com/r/nathanielvarona/pritunl-slack-app) | [pritunl-slack-app](https://github.com/nathanielvarona/pritunl-slack-app)
