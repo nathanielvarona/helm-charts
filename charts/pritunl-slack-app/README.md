@@ -13,18 +13,20 @@ helm repo update
 
 ### App Deployment
 
-#### Basic Use _(for Mocking/Testing)_
+#### Basic Installation
+> _For Mocking and Testing only!_
 
 ```bash
 helm install nathanielvarona/pritunl-slack-app --generate-name
 ```
 
-#### Install with Custom Values Override
+#### With Custom Override Values Deployment
+> _In a Development or Production Environment._
 
 ```bash
-cat <<EOF | helm install pritunl-slack-app nathanielvarona/pritunl-slack-app \
+helm install pritunl-slack-app nathanielvarona/pritunl-slack-app \
   --create-namespace --namespace pritunl-slack-app \
-  --values -
+  --values - <<EOF
 
 replicaCount: 2
 image:
@@ -46,13 +48,18 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
+  tls:
+    - secretName: vpn-slack-app.enterprise-domain.tld-tls-secret
+      hosts:
+        - vpn-slack-app.enterprise-domain.tld
+
 EOF
 ```
 
-Or values in a file
+_Or use the custom override values from the values file._
 
 ```bash
 helm install pritunl-slack-app nathanielvarona/pritunl-slack-app \
   --create-namespace --namespace pritunl-slack-app \
-  --values pritunl-slack-app-custom-values-override.yaml
+  --values pritunl-slack-app-custom-override-values.yaml
 ```
