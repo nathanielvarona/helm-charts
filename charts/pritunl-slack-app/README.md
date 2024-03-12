@@ -7,7 +7,7 @@ Pritunl Slack App Helm Chart
 ### Repository Setup and Update
 
 ```bash
-helm repo add nathanielvarona http://nathaniel.varona.dev/helm-charts/
+helm repo add nathanielvarona http://nathanielvarona.github.io/helm-charts/
 helm repo update
 ```
 
