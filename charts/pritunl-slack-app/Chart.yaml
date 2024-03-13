@@ -1,7 +1,7 @@
 apiVersion: v2
 name: pritunl-slack-app
 description: Pritunl Slack App Helm Chart
-icon: https://raw.githubusercontent.com/pritunl/pritunl-artwork/master/logos/logo1.png
+icon: https://raw.githubusercontent.com/pritunl/pritunl-artwork/master/logos/logo512.png
 
 # A chart can be either an 'application' or a 'library' chart.
 #

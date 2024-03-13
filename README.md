@@ -8,7 +8,7 @@ Collective Helm Charts from my Various Open-Source Projects
 ## Usage
 
 ```bash
-helm repo add nathanielvarona http://nathaniel.varona.dev/helm-charts/
+helm repo add nathanielvarona http://nathanielvarona.github.io/helm-charts/
 helm repo update
 helm install nathanielvarona/<Helm Chart>
 ```
