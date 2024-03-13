@@ -25,7 +25,8 @@ helm install nathanielvarona/pritunl-slack-app --generate-name
 
 ```bash
 helm install pritunl-slack-app nathanielvarona/pritunl-slack-app \
-  --create-namespace --namespace pritunl-slack-app --version 0.1.4 \
+  --create-namespace --namespace pritunl-slack-app \
+  --version 0.1.5 \
   --values - <<EOF
 
 replicaCount: 2
@@ -61,5 +62,6 @@ _Or use the custom override values from the values file._
 ```bash
 helm install pritunl-slack-app nathanielvarona/pritunl-slack-app \
   --create-namespace --namespace pritunl-slack-app \
+  --version 0.1.5 \
   --values pritunl-slack-app-custom-override-values.yaml
 ```
