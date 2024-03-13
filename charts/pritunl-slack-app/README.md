@@ -25,14 +25,14 @@ helm install nathanielvarona/pritunl-slack-app --generate-name
 
 ```bash
 helm install pritunl-slack-app nathanielvarona/pritunl-slack-app \
-  --create-namespace --namespace pritunl-slack-app \
+  --create-namespace --namespace pritunl-slack-app --version 0.1.4 \
   --values - <<EOF
 
 replicaCount: 2
 image:
   repository: nathanielvarona/pritunl-slack-app
   pullPolicy: IfNotPresent
-  tag: "0.1.7"
+  tag: "0.1.8"
 env:
   credentials:
     PRITUNL_BASE_URL: https://vpn.enterprise-domain.tld/
