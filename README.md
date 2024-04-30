@@ -1,5 +1,5 @@
 # helm-charts
-Collective Helm Charts from my Various Open-Source Projects
+Collective [Kubernetes](https://kubernetes.io/) [Helm](https://helm.sh/) Charts from my Various Open-Source Projects
 
 [![Lint and Test Charts](https://github.com/nathanielvarona/helm-charts/actions/workflows/ci.yml/badge.svg)](https://github.com/nathanielvarona/helm-charts/actions/workflows/ci.yml)
 [![Release Charts](https://github.com/nathanielvarona/helm-charts/actions/workflows/release.yml/badge.svg)](https://github.com/nathanielvarona/helm-charts/actions/workflows/release.yml)
