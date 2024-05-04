@@ -41,7 +41,7 @@ jobs:
         run: |
           set -euo pipefail
           CHART_DIRS="$(git --no-pager diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | grep "charts/" | cut -d'/' -f1-2 | uniq)"
-          KUBECONFORM_VERSION="0.6.1"
+          KUBECONFORM_VERSION="0.6.4"
 
           # Install kubeconform
           curl --silent --show-error --fail --location --output /tmp/kubeconform.tar.gz https://github.com/yannh/kubeconform/releases/download/"v${KUBECONFORM_VERSION}"/kubeconform-linux-amd64.tar.gz
@@ -62,7 +62,7 @@ jobs:
 
       - name: Create KIND v${{ matrix.k8s }} Cluster
         if: steps.list-changed.outputs.changed == 'true'
-        uses: helm/kind-action@v1.8.0
+        uses: helm/kind-action@v1.10.0
         with:
           node_image: kindest/node:v${{ matrix.k8s }}
 
